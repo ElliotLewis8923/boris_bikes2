@@ -1,4 +1,5 @@
 require "docking_station"
+require "bike"
 
 	describe DockingStation do 
 		let(:bike) { Bike.new }
@@ -27,9 +28,19 @@ require "docking_station"
 			expect{ station.dock(bike) }.to raise_error(RuntimeError)
 		end
 		
+		it "should provide the list of available bikes" do
+			working_bike, broken_bike = Bike.new, Bike.new
+			broken_bike.break!
+			station.dock(working_bike)
+			station.dock(broken_bike)
+			expect(station.available_bikes).to eq([working_bike])
+		end
 
-	def fill_station(station)
-		(DockingStation::DEFAULT_CAPACITY).times { station.dock(Bike.new) }
-	end
+
+		def fill_station(station)
+			(DockingStation::DEFAULT_CAPACITY).times { station.dock(Bike.new) }
+		end
+
+
 
 end 
