@@ -2,7 +2,8 @@
 require './lib/bike_container'
 
 class ContainHolder; 
-	include BikeContainer; end
+	include BikeContainer; 
+end
 
 	describe BikeContainer do
 	
@@ -15,6 +16,14 @@ class ContainHolder;
 		expect(holder.bike_count).to eq(1)
 	end	
 
+	it "it should not delete bike" do
+		2.times holder.release(bike)
+		expect(bikes.delete(bike)).to eq(false)
+	end
+
+
+
+
 	require './lib/docking_station'
 
 	describe DockingStation do
@@ -24,5 +33,5 @@ class ContainHolder;
 		it "should allow setting default capacity on initialising" do
 			expect(station.capacity).to eq(123)
 		end
-end
 
+end

@@ -19,11 +19,12 @@ module BikeContainer
 	end
 
 	def dock(bike)
-		raise "Station is full" if full?
+		raise "class.name is full" if full?
 		bikes << bike
 	end
 
 	def release(bike)
+		raise "class.name is empty" if bike_count == 0
 		bikes.delete(bike)
 	end
 
@@ -34,4 +35,5 @@ module BikeContainer
 	def available_bikes
 		bikes.reject {|bike| bike.broken? }
 	end
+
 end
