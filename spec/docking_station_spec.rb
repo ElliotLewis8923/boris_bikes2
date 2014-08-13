@@ -1,5 +1,4 @@
 require "docking_station"
-require "bike"
 
 	describe DockingStation do 
 		let(:bike) { Bike.new }
@@ -44,3 +43,4 @@ require "bike"
 
 
 end 
+
